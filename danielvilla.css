@@ -1,0 +1,39 @@
+
+html {
+  background: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#main_div {
+  background: white;
+  display: flex;
+  height: 800px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.job{
+  display: inline-block;
+}
+
+.jobImageDiv {
+  display: inline-block;
+}
+
+.companyLogo {
+  margin: 5px;
+  padding: 5px;
+  width: 60px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.timeRange{
+  color: gray;
+}
+
+.jobPosition{
+  color: gray;
+}
