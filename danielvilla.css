@@ -47,3 +47,13 @@ html {
   max-width: 100%;
   max-height: 100%;
 }
+
+.langsAndTools{
+  display: block;
+  margin: auto;
+  padding: 5px;
+  width: 130px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
