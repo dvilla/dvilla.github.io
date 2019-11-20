@@ -7,7 +7,7 @@ html {
 #main_div {
   background: white;
   display: flex;
-  height: 800px;
+  height: 900px;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: stretch;
