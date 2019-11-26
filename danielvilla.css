@@ -68,3 +68,16 @@ body {
 .langsdiv{
   display: block;
 }
+
+#languagesData{
+  display: flex;
+  flex-flow: column wrap;
+  height: 280px;
+  width: 323px;
+}
+
+/* @media (max-width: 40em) {
+  .tname {
+    display: none;
+  }
+} */
