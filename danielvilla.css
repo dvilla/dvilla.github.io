@@ -12,6 +12,7 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: stretch;
+  flex-flow: row wrap;
 }
 
 .job{
