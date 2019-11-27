@@ -7,7 +7,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#main_div {
+#mainSection {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -23,7 +23,7 @@ body {
   display: inline-block;
 }
 
-#main_header {
+#header {
   padding: 10px;
   background: whitesmoke;
 }
