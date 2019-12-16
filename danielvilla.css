@@ -87,3 +87,11 @@ body {
 #personalInfo{
   width: 345px;
 }
+
+#aboutMe{
+  color: #2b2b2b;
+}
+
+.yearsOfExp{
+  color: black
+}
