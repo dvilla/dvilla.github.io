@@ -9,9 +9,7 @@ body {
 
 #mainSection {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  align-items: stretch;
   flex-flow: row wrap;
 }
 
@@ -99,4 +97,12 @@ body {
 
 #languagesMain{
   width: 323px;
+}
+
+@media (width: 800px) {
+  #languagesMain {
+    position: absolute;
+    left: 40px;
+    top: 560px;
+  }
 }
