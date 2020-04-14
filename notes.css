@@ -1,0 +1,58 @@
+li {
+  list-style: none;
+}
+
+
+.sticky {
+  text-decoration: none;
+  color:#000;
+  background:#ffff9b;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+  margin: 1em;
+  float: left;
+  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  -webkit-transform:rotate(-2deg);
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+ul li:nth-child(even) {
+  -o-transform:rotate(2deg);
+  -webkit-transform:rotate(2deg);
+  -moz-transform:rotate(2deg);
+  position:relative;
+  top:6px;
+}
+
+ul li:nth-child(3n) {
+  -o-transform:rotate(-1deg);
+  -webkit-transform:rotate(-1deg);
+  -moz-transform:rotate(-1deg);
+  position:relative;
+  top:-3px;
+}
+
+ul li:nth-child(5n) {
+  -o-transform:rotate(1deg);
+  -webkit-transform:rotate(1deg);
+  -moz-transform:rotate(1deg);
+  position:relative;
+  top:-5px;
+}
+
+span:hover, span:focus{
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  position:relative;
+  z-index:2;
+
+  -moz-transition:-moz-transform .15s linear;
+  -o-transition:-o-transform .15s linear;
+  -webkit-transition:-webkit-transform .15s linear;
+}
