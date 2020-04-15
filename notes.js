@@ -2,18 +2,18 @@ window.onload = init;
 
 function init(){
   var button = document.getElementById("add_button");
-  button.onclick = createSticky;
+  button.onclick = createStickyButtonFunction;
 
-  var stickies = getStickiesArray();
+  var stickies = getStickiesArrayFromLocalStorage();
 
   for(var i = 0; i < stickies.length; i++){
-    var key = stickiesArray[i];
+    var key = stickies[i];
     var value = localStorage[key];
-    addStickyNote(value);
+    addStickyNoteToTheDOM(key, value);
   }
 }
 
-function getStickiesArray(){
+function getStickiesArrayFromLocalStorage(){
   var stickiesArray = localStorage.getItem("stickiesArray");
 
   if(!stickiesArray) {
@@ -25,24 +25,63 @@ function getStickiesArray(){
   return stickiesArray;
 }
 
-function addStickyNote(value){
+function addStickyNoteToTheDOM(key, value){
    var stickies = document.getElementById("stickies");
    
    //Create elements li and span
    var sticky = document.createElement("li");
    var span = document.createElement("span");
+   var closeIcon = document.createElement("button");
 
+   //Adding attributes to the span
    span.setAttribute("class", "sticky");
+   span.setAttribute("id", key);
+
+   //Adding attributes to the closeIcon
+   closeIcon.setAttribute("class", "closeIconSticky");
+   closeIcon.textContent += "X"
+   closeIcon.onclick = deleteStickyNoteFromDOM;
+
    span.innerHTML = value;
    sticky.appendChild(span);
+   span.appendChild(closeIcon);
+
    stickies.appendChild(sticky);
 }
 
-function createSticky(){
+function createStickyButtonFunction(){
   var value = document.getElementById("note_text").value;
-  var key = "sticky_" + Date.now();
+  if (value !== "") {
+    var key = "sticky_" + Date.now();
 
-  localStorage.setItem(key, value);
+    //Add stickies ID to the array on localStorage
+    var stickiesArray = getStickiesArrayFromLocalStorage()
+    stickiesArray.push(key)
+    localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
 
-  addStickyNote(value);
+    localStorage.setItem(key, value);
+    addStickyNoteToTheDOM(key, value);
+  }
+}
+
+function deleteStickyNoteFromLocalStorage(key){
+  var stickiesArray = getStickiesArrayFromLocalStorage()
+  for(var x = 0; x < stickiesArray.length; x++){
+    console.log(stickiesArray[x]);
+    console.log(key);
+    console.log("ok");
+    if(stickiesArray[x] === key){
+      console.log("jsjsjsj");
+      stickiesArray.splice(x, 1);
+    }
+  }
+  localStorage.removeItem(key)
+  localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+}
+
+function deleteStickyNoteFromDOM(e){
+  var key = e.target.parentNode.id;
+  var stickyNote = document.getElementById(key);
+  stickyNote.parentNode.style.display = "none";
+  deleteStickyNoteFromLocalStorage(key)
 }

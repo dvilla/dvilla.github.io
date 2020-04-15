@@ -4,6 +4,7 @@ li {
 
 
 .sticky {
+  word-wrap: break-word;
   text-decoration: none;
   color:#000;
   background:#ffff9b;
@@ -55,4 +56,12 @@ span:hover, span:focus{
   -moz-transition:-moz-transform .15s linear;
   -o-transition:-o-transform .15s linear;
   -webkit-transition:-webkit-transform .15s linear;
+}
+
+.closeIconSticky {
+  border: none;
+  background: none;
+  position: absolute;
+  left: 165px;
+  bottom: 171px;
 }
