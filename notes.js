@@ -11,6 +11,16 @@ function init(){
     var value = localStorage[key];
     addStickyNoteToTheDOM(key, value);
   }
+
+  var input = document.getElementById("note_text");
+
+  input.addEventListener("keyup", function(event){
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("add_button").click();
+      this.value = "";
+    }
+  });
 }
 
 function getStickiesArrayFromLocalStorage(){
@@ -61,17 +71,14 @@ function createStickyButtonFunction(){
 
     localStorage.setItem(key, value);
     addStickyNoteToTheDOM(key, value);
+    document.getElementById("note_text").value = "";
   }
 }
 
 function deleteStickyNoteFromLocalStorage(key){
   var stickiesArray = getStickiesArrayFromLocalStorage()
   for(var x = 0; x < stickiesArray.length; x++){
-    console.log(stickiesArray[x]);
-    console.log(key);
-    console.log("ok");
     if(stickiesArray[x] === key){
-      console.log("jsjsjsj");
       stickiesArray.splice(x, 1);
     }
   }
