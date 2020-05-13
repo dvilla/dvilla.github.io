@@ -34,14 +34,25 @@ let statesAndCapitals = [
   ["MEX2736", "Chetumal"],
   ["MEX2737", "Mérida"]
 ]
+let mistakes = 0;
 
 function init() {
   let randomState = statesAndCapitals[Math.floor(Math.random() * (statesAndCapitals.length+1))]
-  console.log(randomState);
   let stateMapElement = document.getElementById(randomState[0])
   let stateMapElementName = stateMapElement.getAttribute("name")
   let stateTextElement = document.getElementById("stateName");
   stateTextElement.textContent = stateMapElementName + "?";
 
   stateMapElement.style = "fill: blue"
+
+  let capitalAnswer = hideCapitalAnswer(randomState[1]);
+  document.getElementById("capitalAnswer").textContent = capitalAnswer;
+
+  document.addEventListener('keyup', (e) => {
+    console.log(e);
+  })
+}
+
+function hideCapitalAnswer(capital){
+  return capital.replace(/./g, "_ ");
 }
