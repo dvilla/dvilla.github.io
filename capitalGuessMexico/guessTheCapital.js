@@ -61,6 +61,8 @@ function init() {
     console.log(e.key)
     if(indexOfLetter != -1){
       userAnswer[indexOfLetter] = e.key;
+    } else {
+      mistakes +=1
     }
     document.getElementById("capitalAnswer").textContent = userAnswer.join("");
   })
