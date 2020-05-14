@@ -33,36 +33,39 @@ let statesAndCapitals = [
   ["MEX2735", "Tuxtla Gutiérrez"],
   ["MEX2736", "Chetumal"],
   ["MEX2737", "Mérida"]
-]
+];
 
 let mistakes = 0;
 
-let answer
+let answer;
 
-let userAnswer
+let userAnswer;
 
 function init() {
-  let randomState = statesAndCapitals[Math.floor(Math.random() * (statesAndCapitals.length+1))]
-  let stateMapElement = document.getElementById(randomState[0])
-  let stateMapElementName = stateMapElement.getAttribute("name")
+  let randomState = statesAndCapitals[Math.floor(Math.random() * (statesAndCapitals.length+1))];
+  let stateMapElement = document.getElementById(randomState[0]);
+  let stateMapElementName = stateMapElement.getAttribute("name");
   let stateTextElement = document.getElementById("stateName");
   stateTextElement.textContent = stateMapElementName + "?";
 
-  stateMapElement.style = "fill: blue"
+  stateMapElement.style = "fill: blue";
 
   let userAnswer = hideCapitalAnswer(randomState[1]);
-  answer = randomState[1].split("");
+  answer = randomState[1].toLowerCase().split("");
 
   document.getElementById("capitalAnswer").textContent = userAnswer.join("");
 
   document.addEventListener('keyup', (e) => {
     let indexOfLetter = answer.indexOf(e.key);
     console.log(userAnswer);
-    console.log(e.key)
+    console.log(e.key);
     if(indexOfLetter != -1){
       userAnswer[indexOfLetter] = e.key;
+      if(userAnswer.indexOf("_") === -1){
+        console.log("YOU WON")
+      }
     } else {
-      mistakes +=1
+      mistakes +=1;
     }
     document.getElementById("capitalAnswer").textContent = userAnswer.join("");
   })
