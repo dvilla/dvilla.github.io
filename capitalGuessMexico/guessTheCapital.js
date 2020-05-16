@@ -6,11 +6,11 @@ let statesAndCapitals = [
   ["MEX2708", "Saltillo"],
   ["MEX2709", "Chihuahua"],
   ["MEX2710", "Victoria de Durango"],
-  ["MEX2711", "Culiacán Rosales"],
+  ["MEX2711", "Culiacan Rosales"],
   ["MEX2712", "Hermosillo"],
   ["MEX2713", "Zacatecas"],
   ["MEX2714", "Monterrey"],
-  ["MEX2715", "San Luis Potosí"],
+  ["MEX2715", "San Luis Potosi"],
   ["MEX2716", "Ciudad Victoria"],
   ["MEX2717", "Aguascalientes"],
   ["MEX2718", "Colima"],
@@ -18,52 +18,59 @@ let statesAndCapitals = [
   ["MEX2720", "Morelia"],
   ["MEX2721", "Tepic"],
   ["MEX2722", "San Francisco de Campeche"],
-  ["MEX2723", "Oaxaca de Juáre"],
+  ["MEX2723", "Oaxaca de Juarez"],
   ["MEX2724", "Puebla de Zaragoza"],
   ["MEX2725", "Villahermosa"],
   ["MEX2726", "Tlaxcala"],
-  ["MEX2727", "Ciudad de México"],
   ["MEX2728", "Guanajuato"],
   ["MEX2729", "Chilpancingo de los Bravos"],
   ["MEX2730", "Pachuca de Soto"],
   ["MEX2731", "Toluca de Lerdo"],
   ["MEX2732", "Cuernavaca"],
-  ["MEX2733", "Santiago de Querétaro"],
-  ["MEX2734", "Xalapa-Enríquez"],
-  ["MEX2735", "Tuxtla Gutiérrez"],
+  ["MEX2733", "Santiago de Queretaro"],
+  ["MEX2734", "Xalapa-Enriquez"],
+  ["MEX2735", "Tuxtla Gutierrez"],
   ["MEX2736", "Chetumal"],
-  ["MEX2737", "Mérida"]
+  ["MEX2737", "Merida"]
 ];
 
 let mistakes = 0;
-
+let randomNumber;
+let randomState;
+let stateMapElement;
+let stateMapElementName;
+let stateTextElement;
+let userAnswer;
 let answer;
 
-let userAnswer;
-
 function init() {
-  let randomState = statesAndCapitals[Math.floor(Math.random() * (statesAndCapitals.length+1))];
-  let stateMapElement = document.getElementById(randomState[0]);
-  let stateMapElementName = stateMapElement.getAttribute("name");
-  let stateTextElement = document.getElementById("stateName");
+  initiateGame();
+  addKeyListener();
+}
+
+function initiateGame() {
+  randomNumber = Math.floor(Math.random() * (statesAndCapitals.length));
+  randomState = statesAndCapitals[randomNumber];
+  stateMapElement = document.getElementById(randomState[0]);
+  stateMapElementName = stateMapElement.getAttribute("name");
+  stateTextElement = document.getElementById("stateName");
   stateTextElement.textContent = stateMapElementName + "?";
 
   stateMapElement.style = "fill: blue";
 
-  let userAnswer = hideCapitalAnswer(randomState[1]);
+  userAnswer = hideCapitalAnswer(randomState[1]);
   answer = randomState[1].toLowerCase().split("");
 
   document.getElementById("capitalAnswer").textContent = userAnswer.join("");
+}
 
+function addKeyListener() {
   document.addEventListener('keyup', (e) => {
     let indexOfLetter = answer.indexOf(e.key);
-    console.log(userAnswer);
-    console.log(e.key);
+
     if(indexOfLetter != -1){
-      userAnswer[indexOfLetter] = e.key;
-      if(userAnswer.indexOf("_") === -1){
-        console.log("YOU WON")
-      }
+      replaceLetterInDisplayedAnswer(answer, e.key, userAnswer);
+      isWordCompleted(userAnswer)
     } else {
       mistakes +=1;
     }
@@ -73,4 +80,20 @@ function init() {
 
 function hideCapitalAnswer(capital){
   return capital.replace(/./g, "_").split("");
+}
+
+function replaceLetterInDisplayedAnswer(answer, key, userAnswer) {
+  for(let x = 0; x < answer.length; x++){
+    if(answer[x] === key){
+      userAnswer[x] = key;
+    }
+  }
+}
+
+function isWordCompleted(userAnswer) {
+  if(userAnswer.indexOf("_") === -1){
+    stateMapElement.style = "fill: green";
+    statesAndCapitals.splice(randomNumber, 1)
+    initiateGame();
+  }
 }
