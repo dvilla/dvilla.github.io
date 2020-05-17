@@ -67,6 +67,11 @@ function initiateGame() {
 function addKeyListener() {
   document.addEventListener('keyup', (e) => {
     let indexOfLetter = answer.indexOf(e.key);
+    
+    if(statesAndCapitals.length === 0){
+      document.getElementById("capitalAnswer").textContent = "YOU WON!";
+      return;
+    }
 
     if(indexOfLetter != -1){
       replaceLetterInDisplayedAnswer(answer, e.key, userAnswer);
