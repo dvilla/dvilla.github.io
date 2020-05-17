@@ -75,11 +75,11 @@ function addKeyListener() {
 
     if(indexOfLetter != -1){
       replaceLetterInDisplayedAnswer(answer, e.key, userAnswer);
+      document.getElementById("capitalAnswer").textContent = userAnswer.join("");
       isWordCompleted(userAnswer)
     } else {
       mistakes +=1;
     }
-    document.getElementById("capitalAnswer").textContent = userAnswer.join("");
   })
 }
 
