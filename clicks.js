@@ -19,7 +19,7 @@ function init(){
 
 function getCurrentJobTime(){
   var current_job = document.getElementById("current_job");
-  var initial_date = new Date(2020, 1, 22);
+  var initial_date = new Date(2020, 4, 22);
   var date_now = new Date(Date.now());
   var initial_date_month_and_year = getMonthAndYear(initial_date);
   var date_now_month_and_year = getMonthAndYear(date_now);
