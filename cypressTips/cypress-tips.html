@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cypress Tips</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="cypress-tips.css" rel="stylesheet">
+</head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">Cypress tips and tricks</h2>
+      <div id="myCarousel" class="carousel slide" data-interval="0" data-wrap="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+          <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+
+          <div class="item active">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <div class="carousel-caption text-start">
+              <h1>Tip 1</h1>
+              <br>
+              <img src="sc0.png">
+              <h1>Use cy.pause( );</h1>
+              <p>And take a break</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <div class="carousel-caption text-start">
+              <h1>Tip 2</h1>
+              <br>
+              <img src="sc1.png">
+              <h1>Open the developer tools</h1>
+              <p>Yes, like you normally would</p>
+            </div>
+          </div>
+        
+          <div class="item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <div class="carousel-caption text-start">
+              <h1>Tip 3</h1>
+              <br>
+              <img src="sc2.png">
+              <h1>It is just using selectors</h1>
+              <p>There's more in life than just data-testid</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <div class="carousel-caption text-start">
+              <h1>Tip 4</h1>
+              <br>
+              <img src="sc3.png">
+              <h1>Be deterministic</h1>
+              <p>After all this time? Always</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <div class="carousel-caption text-start">
+              <h1>Tip 5</h1>
+              <br>
+              <img src="sc4.png">
+              <h1>Make test fail!</h1>
+              <p>So when it passes you feel safe</p>
+            </div>
+          </div>
+      
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
+
