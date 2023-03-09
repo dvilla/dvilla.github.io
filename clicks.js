@@ -17,26 +17,40 @@ function init(){
   getCurrentJobTime();
 }
 
-function getCurrentJobTime(){
-  var current_job = document.getElementById("current_job");
-  var initial_date = new Date(2020, 10, 30);
-  var date_now = new Date(Date.now());
-  var initial_date_month_and_year = getMonthAndYear(initial_date);
-  var date_now_month_and_year = getMonthAndYear(date_now);
+function getCurrentJobTime() {
+  const currentJobElem = document.getElementById("current_job");
+  const initialDate = new Date(2020, 10, 30);
+  const currentDate = new Date();
+  const { years, months } = calculateTotalTime(initialDate, currentDate);
+  const formattedDateRange = formatDateRange(initialDate, currentDate);
 
-  var total_months = date_now.getFullYear() * 12;
-  total_months -= initial_date.getFullYear() * 12;
-  total_months += date_now.getMonth();
-  total_months -= initial_date.getMonth();
-
-  current_job.innerText = initial_date_month_and_year +  " – " + date_now_month_and_year + " ~ " + total_months + " mos";
+  currentJobElem.innerText = formattedDateRange + " ~ " + years + " yrs, " + months + " mos";
 }
 
-function getMonthAndYear(date){
-  const monthNames = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  var monthName = monthNames[date.getMonth()];
-  var year = date_now_year = date.getFullYear();
-  return monthName + " " + year;
+function calculateTotalTime(startDate, endDate) {
+  const startYear = startDate.getFullYear();
+  const endYear = endDate.getFullYear();
+  const startMonth = startDate.getMonth();
+  const endMonth = endDate.getMonth();
+
+  let years = endYear - startYear;
+  let months = endMonth - startMonth;
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return { years, months };
+}
+
+function formatDateRange(startDate, endDate) {
+  const startMonth = startDate.toLocaleString('default', { month: 'short' });
+  const endMonth = endDate.toLocaleString('default', { month: 'short' });
+  const startYear = startDate.getFullYear();
+  const endYear = endDate.getFullYear();
+  const dateRange = startMonth + " " + startYear + " - " + endMonth + " " + endYear;
+  return dateRange;
 }
 
 window.onload = init;
