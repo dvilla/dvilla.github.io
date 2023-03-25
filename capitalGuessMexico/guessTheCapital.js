@@ -47,6 +47,12 @@ let stateFlag;
 function initiateGame() {
   setNewState();
   addKeyListener();
+  displayMistakes();
+}
+
+function displayMistakes() {
+  mistakesElement = document.getElementById("mistakes");
+  mistakesElement.textContent = mistakes;
 }
 
 function setNewState() {
@@ -83,6 +89,7 @@ function addKeyListener() {
       isWordCompleted(userAnswer)
     } else {
       mistakes +=1;
+      displayMistakes();
     }
   })
 }
