@@ -88,7 +88,7 @@ function addKeyListener() {
 }
 
 function hideCapitalAnswer(capital){
-  return capital.replace(/./g, "_").split("");
+  return capital.replace(/[a-z]/ig, "_").split("")
 }
 
 function replaceLetterInDisplayedAnswer(answer, key, userAnswer) {
@@ -103,6 +103,6 @@ function isWordCompleted(userAnswer) {
   if(userAnswer.indexOf("_") === -1){
     stateMapElement.style = "fill: green";
     statesAndCapitals.splice(randomNumber, 1)
-    setNewState();
+    setTimeout(setNewState, "3000");
   }
 }
